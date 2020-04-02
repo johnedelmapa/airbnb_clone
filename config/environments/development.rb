@@ -59,4 +59,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.web_console.whitelisted_ips = ["192.0.0.1/2","172.25.0.1/16", "172.0.0.1/2"]
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3003 }
 end

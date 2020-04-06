@@ -18,7 +18,7 @@
                 <%= link_to "Forgot your password?",new_user_password_path,class:"d-inline float-right" %>
                 <div class="actions">
                     <%= f.submit "Log in",class:"btn btn-secondary btn-block" %>
-                    <%= link_to "Sign in with Facebook","#",class:"btn btn-primary btn-block mt-2"%>
+                    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path,class:"btn btn-primary btn-block mt-2"%>
                 </div>
             <% end %>
         </div>

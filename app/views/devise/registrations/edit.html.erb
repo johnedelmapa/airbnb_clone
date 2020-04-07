@@ -1,43 +1,39 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<div class="container mt-3">
+    <div class="row mt-3">
+        <div class="col-3 mt-3">
+            <div class="card text-center">
+                <div class="card-header"><h5>Edit Profile</h5></div>
+                <div class="card-body"> 
+                    <%= link_to "View Profile","#",class:"btn btn-outline-primary"%>
+                </div>
+            </div>
+        </div>
+        <div class="col-8 ml-4 mt-3">
+            <div class="card text-center">
+                <div class="card-header"><h5>Your Profile</h5></div>
+                <div class="card-body">
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                        <div class="form-group">
+                            <%= f.text_field :fullname, placeholder: "Full name",class:"form-control form-design" %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.text_field :phonenumber, placeholder: "Phone number",class:"form-control form-design" %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.text_area :description, placeholder: "Description",class:"form-control form-design" %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.email_field :email, placeholder: "Email",class:"form-control form-design" %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.password_field :password, placeholder: "Leave blank if you don't want to change password",class:"form-control form-design" %>
+                        </div>
+                        <div class="actions">
+                            <%= f.submit "Save",class:"btn btn-secondary btn-block" %>
+                        </div> 
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

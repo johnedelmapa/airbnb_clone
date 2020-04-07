@@ -18,7 +18,7 @@
                         <li><%= link_to "Your Reservation","#", class: "dropdown-item" %></li>
                         <li><%= link_to "Your Trips","#", class: "dropdown-item" %></li>
                         <li class="dropdown-divider"></li>
-                        <li><%= link_to "Edit Profile","#", class: "dropdown-item" %></li>
+                        <li><%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %></li>
                         <li>
                             <%= link_to "Logout",  destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                         </li>

@@ -1,0 +1,35 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-3">
+            <div class="card mt-4">
+                <%= image_tag avatar_url(@user),class:"w-100" %>
+                <div class="card-header text-center">
+                    <h5>Verification</h5>
+                </div>
+                <div class="card-body float-left">
+                    <% if @user.uid.present? %>
+                        Facebook
+                    <% else %>
+                        Email Address
+                    <% end %>
+                    <span class="float-right">
+                        <i class="fa fa-check-circle"></i>
+                    </span>
+                    <br>
+                    Phonenumber
+                    <span class="float-right">
+                        <% if @user.phonenumber.nil? || @user.phonenumber.blank? %>
+                            <i class="fa fa-times-circle"></i>
+                        <% else %>
+                            <i class="fa fa-check-circle"></i>
+                        <% end %>
+                    </span>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-9 mt-4">
+            <h2><%= @user.fullname %></h2>
+        </div>
+    </div>
+</div>

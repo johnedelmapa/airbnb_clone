@@ -68,3 +68,12 @@ gem 'toastr-rails', '~> 1.0'
 gem 'omniauth', '~> 1.6'
 gem 'omniauth-facebook', '~> 4.0'
 gem "font-awesome-rails"
+# 2nd week gems
+gem 'faker', '~> 1.6', '>= 1.6.6'
+gem 'paperclip', '~> 5.1.0'
+gem 'aws-sdk', '< 3.0'
+gem 'geocoder', '~> 1.4'
+gem 'jquery-ui-rails', '~> 5.0'
+
+# 3rd week gems
+gem 'ransack', '~> 2.0'

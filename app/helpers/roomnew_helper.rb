@@ -1,0 +1,2 @@
+module RoomnewHelper
+end

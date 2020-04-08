@@ -1,0 +1,24 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-3">
+            <%= render 'sidebar'%>
+        </div>
+
+        <div class="col-9">
+            <div class="card">
+                <div class="card-header">Location</div>
+                <div class="card-body">
+                    <%= form_for @room do |f|%>
+                        <div class="form-group">
+                            <%= f.label :Address %>
+                            <%= f.text_field :address, placeholder: "Where is your address?",class:"form-control form-design", required: true %>
+                        </div>
+                        <div>
+                            <%= f.submit "Save", class:"btn btn-primary" %>
+                        </div>                                          
+                    <% end %>              
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

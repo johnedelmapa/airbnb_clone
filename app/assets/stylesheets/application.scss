@@ -10,3 +10,18 @@
 .avatar-small{
   width:28px;
 }
+
+select{
+  width: 100%;
+  background-color: white;
+  border: 1px solid grey;
+  padding: 10px;
+  appearance: none;
+}
+
+.select:before{
+  content: "\25bc";
+  position: absolute;
+  top: 45px;
+  right: 30px;
+}

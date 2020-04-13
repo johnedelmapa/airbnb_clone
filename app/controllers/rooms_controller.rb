@@ -24,7 +24,7 @@ class RoomsController < ApplicationController
   def price
   end
 
-  def description
+  def description 
   end
 
   def photos
@@ -49,7 +49,7 @@ class RoomsController < ApplicationController
 
   private
     def rooms_params
-      params.require(:room).permit(:home_type,:room_type,:accommodate,:bedroom,:bathroom,:price,:listing_name,:summary,:is_tv,:is_kitchen,:is_internet,:is_heating,:is_air,:address)
+      params.require(:room).permit(:home_type,:room_type,:accommodate,:bedroom,:bathroom,:price,:listing_name,:summary,:is_tv,:is_kitchen,:is_internet,:is_heating,:is_air,:address,:is_active)
     end
 
     def set_room

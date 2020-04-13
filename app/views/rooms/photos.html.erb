@@ -7,7 +7,18 @@
         <div class="col-9">
             <div class="card">
                 <div class="card-header">Photo Upload</div>
-                <div class="card-body">
+                <div class="card-body text-center">
+                    <%= form_for @room, url: room_photos_path(@room),method: 'post',html:{multipart: true} do |f| %>
+                        <div class="form-group">
+                            <span>
+                                Select Photos
+                                <%= file_field_tag "images[]", type: :file, multiple:true%>
+                            </span>        
+                        </div>
+                        
+                        <%= f.submit "Add Photos", class:"btn btn-primary"%>
+                    <% end %>
+                    <%= render "photos/photos_list" %>
                     
                 </div>
             </div>

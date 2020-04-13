@@ -73,6 +73,16 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
-
+  config.paperclip_defaults = {
+    storage: :s3,
+    path: ':class/:attachment/:id/:style/:filename',
+    s3_host_name: 's3-ap-northeast-1.amazonaws.com',
+    s3_credentials: {
+      bucket: 'shiroairbnb',
+      access_key_id:  Rails.application.credentials.aws[:access_key_id],
+      secret_access_key:  Rails.application.credentials.aws[:secret_access_key],
+      s3_region: 'ap-northeast-1'
+    }
+  }
  
 end

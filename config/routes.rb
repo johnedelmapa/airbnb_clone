@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   
   
+  get 'photos/create'
+  get 'photos/destroy'
   root 'static_page#home'
 
   devise_for :users,
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
       get 'amenities'
       get 'location'
     end
+    resources :photos,only:[:create,:destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

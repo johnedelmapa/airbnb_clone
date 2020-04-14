@@ -8,9 +8,11 @@
 }
 
 .avatar-small{
-  width:28px;
+  width: 28px;
 }
-
+.avatar-medium{
+  width: 100px;
+}
 select{
   width: 100%;
   background-color: white;
@@ -31,4 +33,7 @@ select{
   img{
     width: 100%;
   }
+}
+.del{
+  text-decoration: line-through;
 }

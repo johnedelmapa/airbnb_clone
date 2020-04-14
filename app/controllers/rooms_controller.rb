@@ -18,6 +18,10 @@ class RoomsController < ApplicationController
     end
   end
 
+  def show
+    @photos = @room.photos
+  end
+
   def index
     @rooms = current_user.rooms
   end

@@ -6,5 +6,12 @@ class Room < ApplicationRecord
   validates :accommodate,presence: true
   validates :bedroom,presence: true
   validates :bathroom,presence: true
-  
+
+  def cover_photo(size)
+    if photos.length > 0
+      photos.first.image.url(size)
+    else
+      'blank.jpg'
+    end
+  end
 end

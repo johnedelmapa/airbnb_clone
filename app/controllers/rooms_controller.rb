@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
 
   before_action :authenticate_user!,except: [:show]
-  before_action :set_room,except: [:new,:create]
+  before_action :set_room,except: [:index,:new,:create]
   before_action :is_authorized, only: [:listing,:price,:description,:photos,:amenities,:location,:update]
   def new
     @room = current_user.rooms.build
@@ -16,6 +16,10 @@ class RoomsController < ApplicationController
       flash[:alert] = "Something went wrong"
       render 'new'
     end
+  end
+
+  def index
+    @rooms = current_user.rooms
   end
 
   def listing

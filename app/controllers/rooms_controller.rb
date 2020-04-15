@@ -20,6 +20,7 @@ class RoomsController < ApplicationController
 
   def show
     @photos = @room.photos
+    @reservation = Reservation.new
   end
 
   def index

@@ -17,3 +17,4 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require toastr
+//= require jquery-ui/datepicker

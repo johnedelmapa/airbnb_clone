@@ -26,7 +26,7 @@
                 <table class="table">
                     <tr>
                         <td class="text-left">Price</td>
-                        <td class="text-right"><%=@room.price%></td>
+                        <td class="text-right"><%= @room.price %></td>
                     </tr>
                      <tr>
                         <td class="text-left">Night(s)</td>
@@ -84,11 +84,11 @@
                 if (data.conflict){
                   $('#message').text("These days are not available.");
                   $('#preview').hide();
-                  $('btn-book').attr('disable',true);
+                  $('#btn-book').attr('disabled',true);
                 }else{
                   $('#message').text("");
                   $('#preview').show();
-                  $('btn-book').attr('disable',false);
+                  $('#btn-book').attr('disabled',false);
                   var total = nights * <%= @room.price %>
                    $('#reservation-nights').text(nights);
                    $('#reservation-total').text(total)
@@ -118,11 +118,11 @@
                 if (data.conflict){
                   $('#message').text("These days are not available.");
                   $('#preview').hide();
-                  $('btn-book').attr('disable',true);
+                  $('#btn-book').attr('disabled',true);
                 }else{
                   $('#message').text("");
                   $('#preview').show();
-                  $('btn-book').attr('disable',false);
+                  $('#btn-book').attr('disabled',false);
                   var total = nights * <%= @room.price %>
                    $('#reservation-nights').text(nights);
                    $('#reservation-total').text(total)

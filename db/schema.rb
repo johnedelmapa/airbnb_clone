@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_031557) do
+ActiveRecord::Schema.define(version: 2020_04_17_063624) do
 
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "room_id"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 2020_04_15_031557) do
     t.datetime "end_date"
     t.integer "price"
     t.integer "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.integer "room_id"
+    t.integer "reservation_id"
+    t.integer "guest_id"
+    t.integer "host_id"
+    t.integer "star"
+    t.text "comment"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

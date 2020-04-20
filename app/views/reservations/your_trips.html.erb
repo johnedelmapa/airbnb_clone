@@ -18,9 +18,12 @@
                             <div class="col-5 mt-2">                
                                 <span class="d-block"><%= link_to reservation.room.listing_name ,room_path(reservation.room) %></span>
                                 <%= image_tag avatar_url(reservation.room.user), class:"rounded-circle avatar-small mb-2"%>
-                                <span><%= link_to reservation.user.fullname,user_path(reservation.user)%></span>
+                                <span><%= link_to reservation.room.user.fullname,user_path(reservation.room.user)%></span>
                             </div>
-                            <div class="col-3 mt-2"><%= link_to "Review the host", "#",class:"btn btn-primary"%></div>
+                            <div class="col-3 mt-2">
+                            <%# <%= link_to "Review the host", "#",class:"btn btn-primary"%> 
+                                <%= render partial:'reviews/guest_form', locals:{reservation: reservation}%>
+                            </div>
                             <hr>
                         <% end %>
                     </div>

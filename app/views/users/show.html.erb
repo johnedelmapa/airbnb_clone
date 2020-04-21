@@ -28,8 +28,17 @@
                 </div>
             </div>
         </div>
-        <div class="col-9 mt-4">
+        <div class="col-9 mt-4 mb-4">
             <h2><%= @user.fullname %></h2>
+            <p><% @user.description %></p>
+            <h5>Listing(<%= @rooms.count %>)</h5>
+            <%= render 'rooms/room_list'%>  
+            <br>
+            <h5>Review From Guest(<%= @guest_reviews.count %>)</h5>
+            <%= render 'reviews/guest_list'%>
+            <br>
+            <h5>Review From Host(<%= @host_reviews.count %>)</h5>
+            <%= render 'reviews/host_list'%>
         </div>
     </div>
 </div>

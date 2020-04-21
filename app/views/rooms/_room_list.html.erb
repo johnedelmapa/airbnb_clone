@@ -1,0 +1,25 @@
+<% if @rooms.count > 0 %>
+    <div class="row">
+        <% @rooms.each do |room|%>
+            <div class="col-4">
+                <div class="card mt-3">
+                    <div class="card-header preview">
+                        <%= image_tag room.cover_photo(:medium) %>
+                    </div>
+                    <div class="card-body">
+                        <%= link_to room.listing_name,room %><br>
+                        $<%= room.price %> - <%= room.home_type %> - <%= pluralize(room.bedroom, "bed")%>          
+                        <div id="star_<%= room.id %>"></div><%= pluralize(room.guest_reviews.count, "review") %>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $('#star_<%= room.id %>').raty({
+                    path:'/assets',
+                    readOnly: true,
+                    score: <%= room.average_rating %>
+                });
+            </script>
+        <% end %>
+    </div>
+<% end %>

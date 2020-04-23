@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'static_page#home'
+  get '/search',to:'static_page#search'
+
   devise_for :users,
   path: '',
   path_names: {sign_in: 'login', sign_up: 'registration', sign_out: 'logout'},

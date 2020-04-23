@@ -1,0 +1,50 @@
+<div class="container">
+    <div id="main">
+        <div id="left">
+            <div class="row">
+                <div class="col-4 mx-auto">
+                    <button id="filter" class="btn btn-primary arrow mt-4" data-toggle="collapse" data-target="#collapsePanel">
+                        More filter
+                    </button>
+                </div>
+            </div>
+            <div class="show">
+                <br>
+                <div class="collapse" id="collapsePanel">
+                    More Filter here using ransack
+                </div>
+                <br>
+                <div class="row">
+                    <% if @arrRooms.count > 0 %>
+                        <% @arrRooms.each do |room|%>
+                            <div class="col-4">
+                                <div class="card mt-3">
+                                    <div class="card-header preview">
+                                        <%= image_tag room.cover_photo(:medium) %>
+                                    </div>
+                                    <div class="card-body">
+                                        <%= link_to room.listing_name,room %><br>
+                                        $<%= room.price %> - <%= room.home_type %> - <%= pluralize(room.bedroom, "bed")%>          
+                                        <div id="star_<%= room.id %>"></div><%= pluralize(room.guest_reviews.count, "review") %>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                $('#star_<%= room.id %>').raty({
+                                    path:'/assets',
+                                    readOnly: true,
+                                    score: <%= room.average_rating %>
+                                });
+                            </script>   
+                        <% end %>
+                    <% else %>
+                        <h5>There are no available room</h5>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div id="right">
+            <!-- Google map goes here -->
+        </div>
+    </div>
+</div>

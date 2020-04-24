@@ -11,40 +11,113 @@
             <div class="show">
                 <br>
                 <div class="collapse" id="collapsePanel">
-                    More Filter here using ransack
-                </div>
-                <br>
-                <div class="row">
-                    <% if @arrRooms.count > 0 %>
-                        <% @arrRooms.each do |room|%>
+                    <%= search_form_for @search, url: search_path, remote: true do |f| %>
+                        <div class="row"> 
+                            <div class="col-6">
+                                <label>Price Range</label>
+                            </div>
+                            <div class="col-3">
+                                <label>Min Price</label>
+                                <%= f.text_field :price_gteq, class:"form-control"%>
+                            </div>
+                            <div class="col-3">
+                                <label>Max Price</label>
+                                <%= f.text_field :price_lteq, class:"form-control"%>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                            <%= text_field_tag :start_date,params[:start_date],readonly: true, placeholder: "Start Date", class: "form-control" %>
+                            </div>
+                            <div class="col-6">
+                                <%= text_field_tag :end_date,params[:end_date],readonly: true, placeholder: "End Date", class: "form-control",disabled:true %>
+                            </div>
+                        </div>
+                        <div class="row mt-4 ">
                             <div class="col-4">
-                                <div class="card mt-3">
-                                    <div class="card-header preview">
-                                        <%= image_tag room.cover_photo(:medium) %>
-                                    </div>
-                                    <div class="card-body">
-                                        <%= link_to room.listing_name,room %><br>
-                                        $<%= room.price %> - <%= room.home_type %> - <%= pluralize(room.bedroom, "bed")%>          
-                                        <div id="star_<%= room.id %>"></div><%= pluralize(room.guest_reviews.count, "review") %>
-                                    </div>
+                                <%= check_box_tag('q[room_type_eq_any][]',"Entire") %>Entire
+                            </div>
+                            <div class="col-4">
+                                <%= check_box_tag('q[room_type_eq_any][]',"Private") %>Private
+                            </div>
+                            <div class="col-4">
+                                <%= check_box_tag('q[room_type_eq_any][]',"Shared") %>Shared
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-4 select">
+                                <div class="form-group">
+                                    <label>accommodate</label>
+                                    <%= f.select :accommodate_eq, [["1",1],["2",2],["3",3],["4+",4]], id: "accommodate", prompt: "Select..", class:"form-control" %>
                                 </div>
                             </div>
-                            <script>
-                                $('#star_<%= room.id %>').raty({
-                                    path:'/assets',
-                                    readOnly: true,
-                                    score: <%= room.average_rating %>
-                                });
-                            </script>   
-                        <% end %>
-                    <% else %>
-                        <h5>There are no available room</h5>
+                            <div class="col-4 select">
+                                <div class="form-group">
+                                    <label>bedroom</label>
+                                    <%= f.select :bedroom_eq, [["1",1],["2",2],["3",3],["4+",4]], id: "bedroom", prompt: "Select..", class:"form-control" %>
+                                </div>
+                            </div>
+                            <div class="col-4 select">
+                                <div class="form-group">
+                                    <label>bathroom</label>
+                                    <%= f.select :bathroom_eq, [["1",1],["2",2],["3",3],["4+",4]], id: "bathroom", prompt: "Select..", class:"form-control" %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4 ">
+                            <div class="col-4">
+                                <%= check_box_tag('q[is_tv_eq_any][]',"1") %>TV
+                            </div>
+                            <div class="col-4">
+                                <%= check_box_tag('q[is_kitchen_eq_any][]',"1") %>Kitchen
+                            </div>
+                            <div class="col-4">
+                                <%= check_box_tag('q[is_internet_eq_any][]',"1") %>Internet
+                            </div>
+                            <div class="col-4">
+                                <%= check_box_tag('q[is_heating_eq_any][]',"1") %>Heating
+                            </div>
+                            <div class="col-4">
+                                <%= check_box_tag('q[is_air_eq_any][]',"1") %>Air Conditioning
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <%= f.submit "Search", class:"btn btn-primary mt-4"%>
+                        </div>
                     <% end %>
+                </div>
+                <br>
+                <div class="row" id="room_id">
+                   <%= render 'rooms' %>
                 </div>
             </div>
         </div>
         <div id="right">
-            <!-- Google map goes here -->
+            <%= render 'maps'%>
         </div>
     </div>
 </div>
+
+<script>
+     $('#start_date').datepicker({
+          dateFormat: 'dd-mm-yy',
+          minDate: 0,
+          maxDate: '3m',
+          onSelect: function(selected){
+            $("#end_date").datepicker("option","minDate",selected);
+            $("#end_date").attr("disabled",false);
+          }
+     });
+     $('#end_date').datepicker({
+          dateFormat: 'dd-mm-yy',
+          minDate: 0,
+          maxDate: '3m',
+          onSelect: function(selected){
+            $("#start_date").datepicker("option","maxDate",selected);
+          }
+     });
+</script>
+

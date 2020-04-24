@@ -1,0 +1,31 @@
+<% if @arrRooms.any? %>
+    <div id="map" style="width: 100%; height: 100%;"></div>
+    <script>    
+      var locations = []
+
+      <% @arrRooms.each do |room| %>
+        var data = [<%= room.price %>, <%= room.latitude %>, <%= room.longitude %>];
+        locations.push(data);
+      <% end %>
+      
+      var map = new google.maps.Map(document.getElementById('map'),{
+        zoom: 12,
+        center: { lat: <%= @arrRooms.first.latitude %>,lng:<%= @arrRooms.first.longitude %>}
+      });
+      //get all the rooms from locations array
+      locations.forEach(function(location) {
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(location[1], location[2]),
+          map: map
+        });
+     
+
+      infoWindow = new google.maps.InfoWindow({
+        content: "$" + location[0].toString()
+      });
+
+      infoWindow.open(map,marker);
+
+      });
+  </script>
+<% end %>
